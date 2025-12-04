@@ -45,6 +45,7 @@
             easy_mode.TabIndex = 0;
             easy_mode.Text = "Pet (Easy)";
             easy_mode.UseVisualStyleBackColor = false;
+            easy_mode.Click += easy_Click;
             // 
             // medium_mode
             // 
@@ -55,6 +56,7 @@
             medium_mode.TabIndex = 1;
             medium_mode.Text = "Bird (Medium)";
             medium_mode.UseVisualStyleBackColor = false;
+            medium_mode.Click += medium_Click;
             // 
             // hard_mode
             // 
@@ -65,6 +67,7 @@
             hard_mode.TabIndex = 2;
             hard_mode.Text = "Wildlife (Hard)";
             hard_mode.UseVisualStyleBackColor = false;
+            hard_mode.Click += hard_Click;
             // 
             // label1
             // 
