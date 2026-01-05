@@ -8,6 +8,22 @@ namespace jpwp_forms
 {
     internal class Avatar
     {
-            //tutaj będie wgrany plik ze zwierzętami (odpowiedni do poziomu trudnośći
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Hearts { get; set; }
+        public Avatar(int startX, int startY)
+        {
+            X = startX; // Np. 100
+            Y = startY; // Np. 300
+            Hearts = 3;  // Startujemy z 3 serduszkami
+        }
+        public void GoUp()
+        {
+            Y -= 100;
+        }
+        public void GoDown()
+        {
+            Y += 100;
+        }
     }
 }
