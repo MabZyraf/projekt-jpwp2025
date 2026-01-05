@@ -1,0 +1,13 @@
+shelfTop:
+	-avatar:
+		-size 160;130
+		-locat 35,150
+	
+shelfMid:
+	-avatar: 
+		-size 160;130
+		-locat 35,340
+shelfDown
+	-avatar: 
+		-size 160;130
+		-locat 35,530

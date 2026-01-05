@@ -36,12 +36,26 @@
             label2 = new Label();
             panelMenu = new Panel();
             panelGra = new Panel();
+            avatarPlaceDown = new PictureBox();
+            avatarPlaceMid = new PictureBox();
+            avatarPlaceTop = new PictureBox();
+            shelfBorder = new PictureBox();
+            shelfTop = new PictureBox();
+            shelfMid = new PictureBox();
+            shelfDown = new PictureBox();
             menu = new Button();
             pauza = new Label();
             label4 = new Label();
             lblScore = new Label();
             panelMenu.SuspendLayout();
             panelGra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfBorder).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfTop).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfMid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfDown).BeginInit();
             SuspendLayout();
             // 
             // easy_mode
@@ -118,6 +132,13 @@
             // panelGra
             // 
             panelGra.BackColor = Color.Transparent;
+            panelGra.Controls.Add(avatarPlaceDown);
+            panelGra.Controls.Add(avatarPlaceMid);
+            panelGra.Controls.Add(avatarPlaceTop);
+            panelGra.Controls.Add(shelfBorder);
+            panelGra.Controls.Add(shelfTop);
+            panelGra.Controls.Add(shelfMid);
+            panelGra.Controls.Add(shelfDown);
             panelGra.Controls.Add(menu);
             panelGra.Controls.Add(pauza);
             panelGra.Controls.Add(label4);
@@ -127,6 +148,70 @@
             panelGra.Size = new Size(1003, 712);
             panelGra.TabIndex = 7;
             panelGra.Paint += panelGra_Paint;
+            // 
+            // avatarPlaceDown
+            // 
+            avatarPlaceDown.BackColor = Color.Transparent;
+            avatarPlaceDown.Location = new Point(35, 530);
+            avatarPlaceDown.Name = "avatarPlaceDown";
+            avatarPlaceDown.Size = new Size(160, 130);
+            avatarPlaceDown.TabIndex = 15;
+            avatarPlaceDown.TabStop = false;
+            // 
+            // avatarPlaceMid
+            // 
+            avatarPlaceMid.BackColor = Color.Transparent;
+            avatarPlaceMid.Location = new Point(35, 340);
+            avatarPlaceMid.Name = "avatarPlaceMid";
+            avatarPlaceMid.Size = new Size(160, 130);
+            avatarPlaceMid.TabIndex = 14;
+            avatarPlaceMid.TabStop = false;
+            // 
+            // avatarPlaceTop
+            // 
+            avatarPlaceTop.BackColor = Color.Transparent;
+            avatarPlaceTop.Location = new Point(35, 150);
+            avatarPlaceTop.Name = "avatarPlaceTop";
+            avatarPlaceTop.Size = new Size(160, 130);
+            avatarPlaceTop.TabIndex = 13;
+            avatarPlaceTop.TabStop = false;
+            // 
+            // shelfBorder
+            // 
+            shelfBorder.BackColor = Color.FromArgb(128, 64, 0);
+            shelfBorder.Location = new Point(10, 110);
+            shelfBorder.Name = "shelfBorder";
+            shelfBorder.Size = new Size(975, 20);
+            shelfBorder.TabIndex = 12;
+            shelfBorder.TabStop = false;
+            // 
+            // shelfTop
+            // 
+            shelfTop.BackColor = Color.FromArgb(128, 64, 0);
+            shelfTop.Location = new Point(10, 300);
+            shelfTop.Name = "shelfTop";
+            shelfTop.Size = new Size(975, 20);
+            shelfTop.TabIndex = 11;
+            shelfTop.TabStop = false;
+            // 
+            // shelfMid
+            // 
+            shelfMid.BackColor = Color.FromArgb(128, 64, 0);
+            shelfMid.Location = new Point(10, 490);
+            shelfMid.Name = "shelfMid";
+            shelfMid.Size = new Size(975, 20);
+            shelfMid.TabIndex = 10;
+            shelfMid.TabStop = false;
+            // 
+            // shelfDown
+            // 
+            shelfDown.BackColor = Color.FromArgb(128, 64, 0);
+            shelfDown.Location = new Point(10, 680);
+            shelfDown.Name = "shelfDown";
+            shelfDown.Size = new Size(975, 20);
+            shelfDown.TabIndex = 9;
+            shelfDown.TabStop = false;
+            shelfDown.Click += pictureBox1_Click;
             // 
             // menu
             // 
@@ -157,7 +242,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.IndianRed;
             label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(221, 18);
+            label4.Location = new Point(242, 34);
             label4.Name = "label4";
             label4.Size = new Size(235, 65);
             label4.TabIndex = 1;
@@ -184,12 +269,21 @@
             ClientSize = new Size(1002, 712);
             Controls.Add(panelGra);
             Controls.Add(panelMenu);
+            KeyPreview = true;
             Name = "Form1";
             Text = "Form1";
+            KeyDown += Form1_KeyDown;
             panelMenu.ResumeLayout(false);
             panelMenu.PerformLayout();
             panelGra.ResumeLayout(false);
             panelGra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfBorder).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfTop).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfMid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfDown).EndInit();
             ResumeLayout(false);
         }
 
@@ -206,5 +300,15 @@
         private Label label4;
         private Label pauza;
         private Button menu;
+        private ProgressBar progressBar1;
+        private ProgressBar progressBar4;
+        private ProgressBar progressBar2;
+        private PictureBox shelfDown;
+        private PictureBox shelfBorder;
+        private PictureBox shelfTop;
+        private PictureBox shelfMid;
+        private PictureBox avatarPlaceDown;
+        private PictureBox avatarPlaceMid;
+        private PictureBox avatarPlaceTop;
     }
 }

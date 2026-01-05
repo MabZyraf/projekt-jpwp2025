@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace jpwp_forms
 {
     public enum Difficulty
@@ -6,17 +8,21 @@ namespace jpwp_forms
     }
     public partial class Form1 : Form
     {
-        private Avatar gracz;
+        private Avatar player;
 
         private int speed;  //difficulty
         private int points;
         private int score = 0;
         private int image;
 
+        Random losowacz = new Random();
+
+        List<Food> listaJedzenia = new List<Food>();
+
         public Form1()
         {
             InitializeComponent();
-            gracz = new Avatar();
+            player = new Avatar(35, 340);
 
         }
 
@@ -32,6 +38,19 @@ namespace jpwp_forms
                     break;
 
                 case Difficulty.Medium:
+                    int los = losowacz.Next(1, 4);
+                    switch (los)
+                    {
+                        case 1:
+                            player.Pic = Properties.Resources.duck;
+                            break;
+                        case 2:
+                            player.Pic = Properties.Resources.pigeon;
+                            break;
+                        case 3:
+                            player.Pic = Properties.Resources.crow;
+                            break;
+                    }
                     speed = 2;
                     points = 20;
                     image = 2;
@@ -118,10 +137,47 @@ namespace jpwp_forms
 
         private void panelGra_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(Properties.Resources. gracz.X, gracz.Y, 100, 100);
+            e.Graphics.DrawImage(player.Pic, player.X, player.Y, player.Width, player.Height);
             foreach (var item in listaJedzenia)
             {
                 e.Graphics.DrawImage(item.Obrazek, item.X, item.Y, 50, 50);
+            }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (panelGra.Visible == true)
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    if (player.Y > 150)
+                    { player.GoUp(); }
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    if (player.Y < 530)
+                    { player.GoDown(); }
+                }
+
+                // BARDZO WA¯NE:
+                // Po zmianie pozycji musimy natychmiast odœwie¿yæ widok,
+                // ¿eby zobaczyæ ruch na ekranie.
+                panelGra.Invalidate();
             }
         }
     }

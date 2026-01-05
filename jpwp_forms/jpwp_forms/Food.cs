@@ -20,7 +20,7 @@ namespace jpwp_forms
             Obrazek = img;
             Correct = good;
         }
-        public void RuszSie(int speed)
+        public void Moving(int speed)
         {
             X -= speed; 
         }
