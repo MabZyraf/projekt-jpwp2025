@@ -16,8 +16,8 @@ namespace jpwp_forms
         public Image Pic { get; set; }
         public Avatar(int startX, int startY)
         {
-            X = startX; // Np. 100
-            Y = startY; // Np. 300
+            X = startX; 
+            Y = startY; 
             Hearts = 3;  // Startujemy z 3 serduszkami
             Width = 160;
             Height = 130;

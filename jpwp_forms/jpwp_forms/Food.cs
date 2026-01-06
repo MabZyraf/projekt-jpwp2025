@@ -11,13 +11,17 @@ namespace jpwp_forms
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public Image Obrazek { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public Image PicF { get; set; }
         public bool Correct { get; set; }
         public Food(int x, int y, Image img, bool good)
         {
             X = x;
             Y = y;
-            Obrazek = img;
+            Width = 160;
+            Height = 130;
+            PicF = img;
             Correct = good;
         }
         public void Moving(int speed)

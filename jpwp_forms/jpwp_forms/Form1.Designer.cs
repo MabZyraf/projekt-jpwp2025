@@ -300,9 +300,7 @@
         private Label label4;
         private Label pauza;
         private Button menu;
-        private ProgressBar progressBar1;
         private ProgressBar progressBar4;
-        private ProgressBar progressBar2;
         private PictureBox shelfDown;
         private PictureBox shelfBorder;
         private PictureBox shelfTop;

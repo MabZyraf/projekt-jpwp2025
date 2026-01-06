@@ -14,8 +14,10 @@ namespace jpwp_forms
         private int points;
         private int score = 0;
         private int image;
+        Difficulty currentDiff = Difficulty.Easy;
+        int[] pasyY = { 150, 340, 530 };
 
-        Random losowacz = new Random();
+        Random budda = new Random();
 
         List<Food> listaJedzenia = new List<Food>();
 
@@ -31,6 +33,7 @@ namespace jpwp_forms
             switch (mode)   //difficulty setup
             {
                 case Difficulty.Easy:
+                    currentDiff = Difficulty.Easy;
                     speed = 1;
                     points = 10;
                     image = 1;
@@ -38,7 +41,8 @@ namespace jpwp_forms
                     break;
 
                 case Difficulty.Medium:
-                    int los = losowacz.Next(1, 4);
+                    currentDiff = Difficulty.Medium;
+                    int los = budda.Next(1, 4);
                     switch (los)
                     {
                         case 1:
@@ -58,6 +62,7 @@ namespace jpwp_forms
                     break;
 
                 case Difficulty.Hard:
+                    currentDiff = Difficulty.Hard;
                     speed = 3;
                     points = 50;
                     image = 3;
@@ -67,6 +72,8 @@ namespace jpwp_forms
             }
             panelMenu.Visible = false;
             panelGra.Visible = true;
+            FoodWave();
+            panelGra.Invalidate();
             GameWindow();   //gaming interface 
             PointCounter();
             this.Focus();   //keyboard control
@@ -140,7 +147,7 @@ namespace jpwp_forms
             e.Graphics.DrawImage(player.Pic, player.X, player.Y, player.Width, player.Height);
             foreach (var item in listaJedzenia)
             {
-                e.Graphics.DrawImage(item.Obrazek, item.X, item.Y, 50, 50);
+                e.Graphics.DrawImage(item.PicF, item.X, item.Y, item.Width,item.Height);
             }
         }
 
@@ -179,6 +186,90 @@ namespace jpwp_forms
                 // ¿eby zobaczyæ ruch na ekranie.
                 panelGra.Invalidate();
             }
+        }
+        private void FoodWave() 
+        {
+            int goodLine = budda.Next(0, 3);
+            int fortuneFood = budda.Next(1, 5);
+            int unFortuneFood1 = budda.Next(1, 5);
+            int unFortuneFood2 = ((unFortuneFood1 * fortuneFood) % 4)+1;
+            int licznikZlych = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                bool goodFood=false;
+
+                if (i == goodLine)
+                {
+                    goodFood = true; 
+                }
+                else
+                {
+                    goodFood = false;
+                    licznikZlych++;
+                }
+
+                Image wybranyObrazek = null;
+
+                switch (currentDiff)
+                {
+                    case Difficulty.Easy:
+                        if (goodFood) wybranyObrazek = Properties.Resources.t³o_easy;
+                        else wybranyObrazek = Properties.Resources.t³o_easy;
+                        break;
+
+                    case Difficulty.Medium:
+                        if (goodFood)
+                        {
+                            switch (fortuneFood)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.apple;
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.carrot;
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.nuts;
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.sunflower;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            int aktualnyPech;
+                            if (licznikZlych == 1) aktualnyPech = unFortuneFood1;
+                            else aktualnyPech = unFortuneFood2;
+
+                            switch (aktualnyPech)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.bread;
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.chips;
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.milk;
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.pasta;
+                                    break;
+                            }
+                        }
+                            break;
+
+                    case Difficulty.Hard:
+                                if (goodFood) wybranyObrazek = Properties.Resources.t³o_hard;
+                                else wybranyObrazek = Properties.Resources.t³o_hard;
+                                break;
+                            }
+                            Food next = new Food(500, pasyY[i], wybranyObrazek, goodFood);
+                            listaJedzenia.Add(next);
+
+
+                        }
         }
     }
 }
