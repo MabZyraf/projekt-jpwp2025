@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             easy_mode = new Button();
             medium_mode = new Button();
@@ -35,27 +36,33 @@
             label1 = new Label();
             label2 = new Label();
             panelMenu = new Panel();
-            panelGra = new Panel();
-            avatarPlaceDown = new PictureBox();
-            avatarPlaceMid = new PictureBox();
-            avatarPlaceTop = new PictureBox();
-            shelfBorder = new PictureBox();
-            shelfTop = new PictureBox();
-            shelfMid = new PictureBox();
-            shelfDown = new PictureBox();
-            menu = new Button();
-            pauza = new Label();
-            label4 = new Label();
+            timer = new System.Windows.Forms.Timer(components);
             lblScore = new Label();
+            menu = new Button();
+            shelfDown = new PictureBox();
+            shelfMid = new PictureBox();
+            shelfTop = new PictureBox();
+            shelfBorder = new PictureBox();
+            avatarPlaceTop = new PictureBox();
+            avatarPlaceMid = new PictureBox();
+            avatarPlaceDown = new PictureBox();
+            panelGra = new Panel();
+            heart3 = new PictureBox();
+            heart2 = new PictureBox();
+            heart1 = new PictureBox();
+            btnPause = new Button();
             panelMenu.SuspendLayout();
-            panelGra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)shelfBorder).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)shelfTop).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)shelfMid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)shelfDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfMid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfTop).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shelfBorder).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).BeginInit();
+            panelGra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)heart3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)heart2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)heart1).BeginInit();
             SuspendLayout();
             // 
             // easy_mode
@@ -129,125 +136,10 @@
             panelMenu.TabIndex = 7;
             panelMenu.Paint += panel1_Paint;
             // 
-            // panelGra
+            // timer
             // 
-            panelGra.BackColor = Color.Transparent;
-            panelGra.Controls.Add(avatarPlaceDown);
-            panelGra.Controls.Add(avatarPlaceMid);
-            panelGra.Controls.Add(avatarPlaceTop);
-            panelGra.Controls.Add(shelfBorder);
-            panelGra.Controls.Add(shelfTop);
-            panelGra.Controls.Add(shelfMid);
-            panelGra.Controls.Add(shelfDown);
-            panelGra.Controls.Add(menu);
-            panelGra.Controls.Add(pauza);
-            panelGra.Controls.Add(label4);
-            panelGra.Controls.Add(lblScore);
-            panelGra.Location = new Point(0, 0);
-            panelGra.Name = "panelGra";
-            panelGra.Size = new Size(1003, 712);
-            panelGra.TabIndex = 7;
-            panelGra.Paint += panelGra_Paint;
-            // 
-            // avatarPlaceDown
-            // 
-            avatarPlaceDown.BackColor = Color.Transparent;
-            avatarPlaceDown.Location = new Point(35, 530);
-            avatarPlaceDown.Name = "avatarPlaceDown";
-            avatarPlaceDown.Size = new Size(160, 130);
-            avatarPlaceDown.TabIndex = 15;
-            avatarPlaceDown.TabStop = false;
-            // 
-            // avatarPlaceMid
-            // 
-            avatarPlaceMid.BackColor = Color.Transparent;
-            avatarPlaceMid.Location = new Point(35, 340);
-            avatarPlaceMid.Name = "avatarPlaceMid";
-            avatarPlaceMid.Size = new Size(160, 130);
-            avatarPlaceMid.TabIndex = 14;
-            avatarPlaceMid.TabStop = false;
-            // 
-            // avatarPlaceTop
-            // 
-            avatarPlaceTop.BackColor = Color.Transparent;
-            avatarPlaceTop.Location = new Point(35, 150);
-            avatarPlaceTop.Name = "avatarPlaceTop";
-            avatarPlaceTop.Size = new Size(160, 130);
-            avatarPlaceTop.TabIndex = 13;
-            avatarPlaceTop.TabStop = false;
-            // 
-            // shelfBorder
-            // 
-            shelfBorder.BackColor = Color.FromArgb(128, 64, 0);
-            shelfBorder.Location = new Point(10, 110);
-            shelfBorder.Name = "shelfBorder";
-            shelfBorder.Size = new Size(975, 20);
-            shelfBorder.TabIndex = 12;
-            shelfBorder.TabStop = false;
-            // 
-            // shelfTop
-            // 
-            shelfTop.BackColor = Color.FromArgb(128, 64, 0);
-            shelfTop.Location = new Point(10, 300);
-            shelfTop.Name = "shelfTop";
-            shelfTop.Size = new Size(975, 20);
-            shelfTop.TabIndex = 11;
-            shelfTop.TabStop = false;
-            // 
-            // shelfMid
-            // 
-            shelfMid.BackColor = Color.FromArgb(128, 64, 0);
-            shelfMid.Location = new Point(10, 490);
-            shelfMid.Name = "shelfMid";
-            shelfMid.Size = new Size(975, 20);
-            shelfMid.TabIndex = 10;
-            shelfMid.TabStop = false;
-            // 
-            // shelfDown
-            // 
-            shelfDown.BackColor = Color.FromArgb(128, 64, 0);
-            shelfDown.Location = new Point(10, 680);
-            shelfDown.Name = "shelfDown";
-            shelfDown.Size = new Size(975, 20);
-            shelfDown.TabIndex = 9;
-            shelfDown.TabStop = false;
-            shelfDown.Click += pictureBox1_Click;
-            // 
-            // menu
-            // 
-            menu.BackColor = Color.RosyBrown;
-            menu.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            menu.Location = new Point(746, 18);
-            menu.Name = "menu";
-            menu.Size = new Size(244, 72);
-            menu.TabIndex = 4;
-            menu.Text = "menu";
-            menu.UseVisualStyleBackColor = false;
-            menu.Click += menu_Click;
-            // 
-            // pauza
-            // 
-            pauza.AutoSize = true;
-            pauza.BackColor = Color.IndianRed;
-            pauza.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            pauza.Location = new Point(522, 18);
-            pauza.Name = "pauza";
-            pauza.Size = new Size(153, 65);
-            pauza.TabIndex = 2;
-            pauza.Text = "pauza";
-            pauza.Click += label5_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.IndianRed;
-            label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(242, 34);
-            label4.Name = "label4";
-            label4.Size = new Size(235, 65);
-            label4.TabIndex = 1;
-            label4.Text = "serduszka";
-            label4.Click += label4_Click;
+            timer.Interval = 20;
+            timer.Tick += timer_Tick;
             // 
             // lblScore
             // 
@@ -261,6 +153,146 @@
             lblScore.Text = "Score: x";
             lblScore.Click += label3_Click;
             // 
+            // menu
+            // 
+            menu.BackColor = Color.RosyBrown;
+            menu.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            menu.Location = new Point(746, 12);
+            menu.Name = "menu";
+            menu.Size = new Size(244, 72);
+            menu.TabIndex = 4;
+            menu.Text = "menu";
+            menu.UseVisualStyleBackColor = false;
+            menu.Click += menu_Click;
+            // 
+            // shelfDown
+            // 
+            shelfDown.BackColor = Color.FromArgb(128, 64, 0);
+            shelfDown.Location = new Point(10, 680);
+            shelfDown.Name = "shelfDown";
+            shelfDown.Size = new Size(975, 20);
+            shelfDown.TabIndex = 9;
+            shelfDown.TabStop = false;
+            shelfDown.Click += pictureBox1_Click;
+            // 
+            // shelfMid
+            // 
+            shelfMid.BackColor = Color.FromArgb(128, 64, 0);
+            shelfMid.Location = new Point(10, 490);
+            shelfMid.Name = "shelfMid";
+            shelfMid.Size = new Size(975, 20);
+            shelfMid.TabIndex = 10;
+            shelfMid.TabStop = false;
+            // 
+            // shelfTop
+            // 
+            shelfTop.BackColor = Color.FromArgb(128, 64, 0);
+            shelfTop.Location = new Point(10, 300);
+            shelfTop.Name = "shelfTop";
+            shelfTop.Size = new Size(975, 20);
+            shelfTop.TabIndex = 11;
+            shelfTop.TabStop = false;
+            // 
+            // shelfBorder
+            // 
+            shelfBorder.BackColor = Color.FromArgb(128, 64, 0);
+            shelfBorder.Location = new Point(10, 110);
+            shelfBorder.Name = "shelfBorder";
+            shelfBorder.Size = new Size(975, 20);
+            shelfBorder.TabIndex = 12;
+            shelfBorder.TabStop = false;
+            // 
+            // avatarPlaceTop
+            // 
+            avatarPlaceTop.BackColor = Color.Transparent;
+            avatarPlaceTop.Location = new Point(35, 150);
+            avatarPlaceTop.Name = "avatarPlaceTop";
+            avatarPlaceTop.Size = new Size(160, 130);
+            avatarPlaceTop.TabIndex = 13;
+            avatarPlaceTop.TabStop = false;
+            // 
+            // avatarPlaceMid
+            // 
+            avatarPlaceMid.BackColor = Color.Transparent;
+            avatarPlaceMid.Location = new Point(35, 340);
+            avatarPlaceMid.Name = "avatarPlaceMid";
+            avatarPlaceMid.Size = new Size(160, 130);
+            avatarPlaceMid.TabIndex = 14;
+            avatarPlaceMid.TabStop = false;
+            // 
+            // avatarPlaceDown
+            // 
+            avatarPlaceDown.BackColor = Color.Transparent;
+            avatarPlaceDown.Location = new Point(35, 530);
+            avatarPlaceDown.Name = "avatarPlaceDown";
+            avatarPlaceDown.Size = new Size(160, 130);
+            avatarPlaceDown.TabIndex = 15;
+            avatarPlaceDown.TabStop = false;
+            // 
+            // panelGra
+            // 
+            panelGra.BackColor = Color.Transparent;
+            panelGra.Controls.Add(heart3);
+            panelGra.Controls.Add(heart2);
+            panelGra.Controls.Add(heart1);
+            panelGra.Controls.Add(btnPause);
+            panelGra.Controls.Add(avatarPlaceDown);
+            panelGra.Controls.Add(avatarPlaceMid);
+            panelGra.Controls.Add(avatarPlaceTop);
+            panelGra.Controls.Add(shelfBorder);
+            panelGra.Controls.Add(shelfTop);
+            panelGra.Controls.Add(shelfMid);
+            panelGra.Controls.Add(shelfDown);
+            panelGra.Controls.Add(menu);
+            panelGra.Controls.Add(lblScore);
+            panelGra.Location = new Point(0, 0);
+            panelGra.Name = "panelGra";
+            panelGra.Size = new Size(1003, 712);
+            panelGra.TabIndex = 7;
+            panelGra.Paint += panelGra_Paint;
+            // 
+            // heart3
+            // 
+            heart3.Image = Properties.Resources.hearts;
+            heart3.Location = new Point(480, 9);
+            heart3.Name = "heart3";
+            heart3.Size = new Size(132, 86);
+            heart3.SizeMode = PictureBoxSizeMode.Zoom;
+            heart3.TabIndex = 19;
+            heart3.TabStop = false;
+            heart3.Click += heart3_Click;
+            // 
+            // heart2
+            // 
+            heart2.Image = Properties.Resources.hearts;
+            heart2.Location = new Point(376, 9);
+            heart2.Name = "heart2";
+            heart2.Size = new Size(132, 86);
+            heart2.SizeMode = PictureBoxSizeMode.Zoom;
+            heart2.TabIndex = 18;
+            heart2.TabStop = false;
+            // 
+            // heart1
+            // 
+            heart1.Image = Properties.Resources.hearts;
+            heart1.Location = new Point(271, 9);
+            heart1.Name = "heart1";
+            heart1.Size = new Size(132, 86);
+            heart1.SizeMode = PictureBoxSizeMode.Zoom;
+            heart1.TabIndex = 17;
+            heart1.TabStop = false;
+            heart1.Click += heart1_Click;
+            // 
+            // btnPause
+            // 
+            btnPause.Location = new Point(610, 30);
+            btnPause.Name = "btnPause";
+            btnPause.Size = new Size(112, 34);
+            btnPause.TabIndex = 16;
+            btnPause.Text = "Pause";
+            btnPause.UseVisualStyleBackColor = true;
+            btnPause.Click += btnPause_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -272,18 +304,20 @@
             KeyPreview = true;
             Name = "Form1";
             Text = "Form1";
-            KeyDown += Form1_KeyDown;
             panelMenu.ResumeLayout(false);
             panelMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)shelfDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfMid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfTop).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shelfBorder).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).EndInit();
             panelGra.ResumeLayout(false);
             panelGra.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceMid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)avatarPlaceTop).EndInit();
-            ((System.ComponentModel.ISupportInitialize)shelfBorder).EndInit();
-            ((System.ComponentModel.ISupportInitialize)shelfTop).EndInit();
-            ((System.ComponentModel.ISupportInitialize)shelfMid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)shelfDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)heart3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)heart2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)heart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -295,18 +329,21 @@
         private Label label1;
         private Label label2;
         private Panel panelMenu;
-        private Panel panelGra;
-        private Label lblScore;
-        private Label label4;
-        private Label pauza;
-        private Button menu;
         private ProgressBar progressBar4;
+        private System.Windows.Forms.Timer timer;
+        private Label lblScore;
+        private Button menu;
         private PictureBox shelfDown;
-        private PictureBox shelfBorder;
-        private PictureBox shelfTop;
         private PictureBox shelfMid;
-        private PictureBox avatarPlaceDown;
-        private PictureBox avatarPlaceMid;
+        private PictureBox shelfTop;
+        private PictureBox shelfBorder;
         private PictureBox avatarPlaceTop;
+        private PictureBox avatarPlaceMid;
+        private PictureBox avatarPlaceDown;
+        private Panel panelGra;
+        private Button btnPause;
+        private PictureBox heart3;
+        private PictureBox heart2;
+        private PictureBox heart1;
     }
 }

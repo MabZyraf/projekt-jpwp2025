@@ -9,7 +9,8 @@ namespace jpwp_forms
     public partial class Form1 : Form
     {
         private Avatar player;
-
+        private int tickCounter = 0;
+        private int hearts = 3;
         private int speed;  //difficulty
         private int points;
         private int score = 0;
@@ -20,11 +21,18 @@ namespace jpwp_forms
         Random budda = new Random();
 
         List<Food> listaJedzenia = new List<Food>();
+        List<Image> outro = new List<Image>();
 
         public Form1()
         {
             InitializeComponent();
             player = new Avatar(35, 340);
+            // brak lagów
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.SetProperty |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.NonPublic,
+            null, panelGra, new object[] { true });
 
         }
 
@@ -72,6 +80,17 @@ namespace jpwp_forms
             }
             panelMenu.Visible = false;
             panelGra.Visible = true;
+
+            hearts = 3;
+            LosingHearts();
+
+            score = 0;
+            listaJedzenia.Clear();
+            outro.Clear();
+
+            timer.Start();  //start gry
+
+
             FoodWave();
             panelGra.Invalidate();
             GameWindow();   //gaming interface 
@@ -147,7 +166,7 @@ namespace jpwp_forms
             e.Graphics.DrawImage(player.Pic, player.X, player.Y, player.Width, player.Height);
             foreach (var item in listaJedzenia)
             {
-                e.Graphics.DrawImage(item.PicF, item.X, item.Y, item.Width,item.Height);
+                e.Graphics.DrawImage(item.PicF, item.X, item.Y, item.Width, item.Height);
             }
         }
 
@@ -165,42 +184,40 @@ namespace jpwp_forms
         {
 
         }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (panelGra.Visible == true)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        { // sterowanie góra dó³
+            if (timer.Enabled == true)
             {
-                if (e.KeyCode == Keys.Up)
+                if (keyData == Keys.Up)
                 {
-                    if (player.Y > 150)
-                    { player.GoUp(); }
-                }
-                else if (e.KeyCode == Keys.Down)
-                {
-                    if (player.Y < 530)
-                    { player.GoDown(); }
+                    if (player.Y > 150) player.GoUp();
+                    panelGra.Invalidate();
+                    return true;
                 }
 
-                // BARDZO WA¯NE:
-                // Po zmianie pozycji musimy natychmiast odœwie¿yæ widok,
-                // ¿eby zobaczyæ ruch na ekranie.
-                panelGra.Invalidate();
+                if (keyData == Keys.Down)
+                {
+                    if (player.Y < 530) player.GoDown();
+                    panelGra.Invalidate();
+                    return true;
+                }
             }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
-        private void FoodWave() 
+        private void FoodWave()
         {
             int goodLine = budda.Next(0, 3);
             int fortuneFood = budda.Next(1, 5);
             int unFortuneFood1 = budda.Next(1, 5);
-            int unFortuneFood2 = ((unFortuneFood1 * fortuneFood) % 4)+1;
+            int unFortuneFood2 = ((unFortuneFood1 * fortuneFood) % 4) + 1;
             int licznikZlych = 0;
             for (int i = 0; i < 3; i++)
             {
-                bool goodFood=false;
+                bool goodFood = false;
 
                 if (i == goodLine)
                 {
-                    goodFood = true; 
+                    goodFood = true;
                 }
                 else
                 {
@@ -258,18 +275,117 @@ namespace jpwp_forms
                                     break;
                             }
                         }
-                            break;
+                        break;
 
                     case Difficulty.Hard:
-                                if (goodFood) wybranyObrazek = Properties.Resources.t³o_hard;
-                                else wybranyObrazek = Properties.Resources.t³o_hard;
-                                break;
-                            }
-                            Food next = new Food(500, pasyY[i], wybranyObrazek, goodFood);
-                            listaJedzenia.Add(next);
+                        if (goodFood) wybranyObrazek = Properties.Resources.t³o_hard;
+                        else wybranyObrazek = Properties.Resources.t³o_hard;
+                        break;
+                }
+                Food next = new Food(panelGra.Width + 50, pasyY[i], wybranyObrazek, goodFood);
+                listaJedzenia.Add(next);
 
 
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            tickCounter++;
+            int hold = 70;
+            if (currentDiff == Difficulty.Medium) hold = 50;
+            if (currentDiff == Difficulty.Hard) hold = 30;
+            if (tickCounter > hold)
+            {
+                FoodWave();
+                tickCounter = 0;
+            }
+            for (int i = listaJedzenia.Count - 1; i >= 0; i--)
+            {
+                var item = listaJedzenia[i];
+                item.X -= speed * 8;
+                Rectangle playerField = new Rectangle(player.X, player.Y, player.Width, player.Height);
+                Rectangle foodField = new Rectangle(item.X, item.Y, 80, 80);
+
+                if (playerField.IntersectsWith(foodField))
+                {
+                    if (item.Correct)
+                    {
+                        score += points;
+                    }
+                    else
+                    {
+                        hearts--;
+                        LosingHearts();
+                        outro.Add(item.PicF);
+                        if (hearts <= 0)
+                        {
+                            timer.Stop();
+                            GameOver();
+                            return;
                         }
+                    }
+
+                    listaJedzenia.RemoveAt(i);
+                    continue;
+                }
+                if (item.X < -100)
+                {
+                    listaJedzenia.RemoveAt(i);
+                }
+            }
+            panelGra.Invalidate();
+            lblScore.Text = "Punkty: " + score;
+        }
+
+        private void GameOver()
+        {
+            timer.Stop();
+            string feedback = "Game Over\nScore:" + score + "\n\nYour mistakes:\n";
+
+            if (outro.Count == 0)
+            {
+                feedback += "Perfect score";
+            }
+            else
+            {
+                feedback += "You made " + outro.Count + "mistake/s";
+            }
+            MessageBox.Show(feedback);
+
+            panelGra.Visible = false;
+            panelMenu.Visible = true;
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            if (timer.Enabled == true)
+            {
+                timer.Stop();
+                btnPause.Text = "Resume";
+            }
+            else
+            {
+                timer.Start();
+                btnPause.Text = "Pause";
+                this.Focus();
+            }
+        }
+        private void LosingHearts()
+        {//aktualizacja serduszek
+            if (hearts >= 1) heart1.Visible = true; else heart1.Visible = false;
+            if (hearts >= 2) heart2.Visible = true; else heart2.Visible = false;
+            if (hearts >= 3) heart3.Visible = true; else heart3.Visible = false;
+        }
+
+        private void heart3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void heart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
