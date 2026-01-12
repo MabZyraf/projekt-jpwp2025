@@ -36,6 +36,7 @@
             label1 = new Label();
             label2 = new Label();
             panelMenu = new Panel();
+            lableRecord = new Label();
             timer = new System.Windows.Forms.Timer(components);
             lblScore = new Label();
             menu = new Button();
@@ -125,6 +126,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.Transparent;
+            panelMenu.Controls.Add(lableRecord);
             panelMenu.Controls.Add(label1);
             panelMenu.Controls.Add(label2);
             panelMenu.Controls.Add(easy_mode);
@@ -135,6 +137,20 @@
             panelMenu.Size = new Size(1009, 715);
             panelMenu.TabIndex = 7;
             panelMenu.Paint += panel1_Paint;
+            // 
+            // lableRecord
+            // 
+            lableRecord.AutoSize = true;
+            lableRecord.BackColor = Color.Sienna;
+            lableRecord.BorderStyle = BorderStyle.FixedSingle;
+            lableRecord.Font = new Font("DejaVu Sans Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lableRecord.ForeColor = Color.Black;
+            lableRecord.Location = new Point(380, 640);
+            lableRecord.Name = "lableRecord";
+            lableRecord.Size = new Size(236, 48);
+            lableRecord.TabIndex = 7;
+            lableRecord.Text = "Top score: 0";
+            lableRecord.Click += lableRecord_Click;
             // 
             // timer
             // 
@@ -299,8 +315,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1002, 712);
-            Controls.Add(panelGra);
             Controls.Add(panelMenu);
+            Controls.Add(panelGra);
             KeyPreview = true;
             Name = "Form1";
             Text = "Form1";
@@ -329,7 +345,6 @@
         private Label label1;
         private Label label2;
         private Panel panelMenu;
-        private ProgressBar progressBar4;
         private System.Windows.Forms.Timer timer;
         private Label lblScore;
         private Button menu;
@@ -345,5 +360,6 @@
         private PictureBox heart3;
         private PictureBox heart2;
         private PictureBox heart1;
+        private Label lableRecord;
     }
 }

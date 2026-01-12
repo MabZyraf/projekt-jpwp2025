@@ -15,6 +15,7 @@ namespace jpwp_forms
         public int Height { get; set; }
         public Image PicF { get; set; }
         public bool Correct { get; set; }
+        public string Anwser { get; set; }
         public Food(int x, int y, Image img, bool good)
         {
             X = x;
@@ -23,6 +24,7 @@ namespace jpwp_forms
             Height = 130;
             PicF = img;
             Correct = good;
+            Anwser = "Unknown object";
         }
         public void Moving(int speed)
         {

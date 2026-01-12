@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.IO;
 
 namespace jpwp_forms
 {
@@ -21,7 +22,7 @@ namespace jpwp_forms
         Random budda = new Random();
 
         List<Food> listaJedzenia = new List<Food>();
-        List<Image> outro = new List<Image>();
+        List<string> outro = new List<string>();
 
         public Form1()
         {
@@ -33,6 +34,7 @@ namespace jpwp_forms
             System.Reflection.BindingFlags.Instance |
             System.Reflection.BindingFlags.NonPublic,
             null, panelGra, new object[] { true });
+            ReadScore();
 
         }
 
@@ -158,6 +160,7 @@ namespace jpwp_forms
             panelGra.Visible = false;
             panelMenu.Visible = true;
             panelMenu.BringToFront();
+            ReadScore();
 
         }
 
@@ -226,6 +229,7 @@ namespace jpwp_forms
                 }
 
                 Image wybranyObrazek = null;
+                string theAnwser = " ";
 
                 switch (currentDiff)
                 {
@@ -269,9 +273,11 @@ namespace jpwp_forms
                                     break;
                                 case 3:
                                     wybranyObrazek = Properties.Resources.milk;
+                                    theAnwser = "Milk: Unlike mammals, birds cannot digeste lactose.";
                                     break;
                                 case 4:
                                     wybranyObrazek = Properties.Resources.pasta;
+                                    theAnwser = "Pasta: Both cooked and raw pasta is extremly dangerous for birds.";
                                     break;
                             }
                         }
@@ -282,7 +288,9 @@ namespace jpwp_forms
                         else wybranyObrazek = Properties.Resources.t³o_hard;
                         break;
                 }
+                if (wybranyObrazek == null) wybranyObrazek = Properties.Resources.apple;
                 Food next = new Food(panelGra.Width + 50, pasyY[i], wybranyObrazek, goodFood);
+                next.Anwser = theAnwser;
                 listaJedzenia.Add(next);
 
 
@@ -302,8 +310,9 @@ namespace jpwp_forms
             }
             for (int i = listaJedzenia.Count - 1; i >= 0; i--)
             {
+                int vBonus = score / 50;
                 var item = listaJedzenia[i];
-                item.X -= speed * 8;
+                item.X -= speed * 8 + vBonus;
                 Rectangle playerField = new Rectangle(player.X, player.Y, player.Width, player.Height);
                 Rectangle foodField = new Rectangle(item.X, item.Y, 80, 80);
 
@@ -317,7 +326,7 @@ namespace jpwp_forms
                     {
                         hearts--;
                         LosingHearts();
-                        outro.Add(item.PicF);
+                        outro.Add(item.Anwser);
                         if (hearts <= 0)
                         {
                             timer.Stop();
@@ -341,20 +350,26 @@ namespace jpwp_forms
         private void GameOver()
         {
             timer.Stop();
+            SaveScore();
             string feedback = "Game Over\nScore:" + score + "\n\nYour mistakes:\n";
 
-            if (outro.Count == 0)
+            foreach (string mistake in outro)
+            {
+                feedback += "- " + mistake + "\n";
+            }
+            /*if (outro.Count == 0)
             {
                 feedback += "Perfect score";
             }
             else
             {
                 feedback += "You made " + outro.Count + "mistake/s";
-            }
+            }*/
             MessageBox.Show(feedback);
 
             panelGra.Visible = false;
             panelMenu.Visible = true;
+            ReadScore();
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -386,6 +401,36 @@ namespace jpwp_forms
         private void heart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lableRecord_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void SaveScore()
+        {//aktualizacja rekordu
+            int oldScore = 0;
+            if (File.Exists("record.txt"))
+            {
+                string highScore = File.ReadAllText("record.txt");
+                int.TryParse(highScore, out oldScore);
+            }
+            if (score > oldScore)
+            {
+                File.WriteAllText("record.txt", score.ToString());
+            }
+        }
+        private void ReadScore()
+        {
+            if (File.Exists("record.txt"))
+            {
+                string highScore = File.ReadAllText("record.txt");
+                lableRecord.Text = "Top score: " + highScore;
+            }
+            else
+            {
+                lableRecord.Text = "No game played";
+            }
         }
     }
 }
