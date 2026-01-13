@@ -153,6 +153,16 @@ namespace jpwp_forms.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cat {
+            get {
+                object obj = ResourceManager.GetObject("cat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chips {
             get {
                 object obj = ResourceManager.GetObject("chips", resourceCulture);
@@ -216,6 +226,16 @@ namespace jpwp_forms.Properties {
         internal static System.Drawing.Bitmap crow {
             get {
                 object obj = ResourceManager.GetObject("crow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dog {
+            get {
+                object obj = ResourceManager.GetObject("dog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,6 +493,16 @@ namespace jpwp_forms.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rabbit {
+            get {
+                object obj = ResourceManager.GetObject("rabbit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rawBeans {
             get {
                 object obj = ResourceManager.GetObject("rawBeans", resourceCulture);
@@ -506,6 +536,26 @@ namespace jpwp_forms.Properties {
         internal static System.Drawing.Bitmap salt {
             get {
                 object obj = ResourceManager.GetObject("salt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap squirrel {
+            get {
+                object obj = ResourceManager.GetObject("squirrel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stag {
+            get {
+                object obj = ResourceManager.GetObject("stag", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

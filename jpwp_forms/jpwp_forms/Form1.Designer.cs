@@ -154,7 +154,7 @@
             // 
             // timer
             // 
-            timer.Interval = 20;
+            timer.Interval = 17;
             timer.Tick += timer_Tick;
             // 
             // lblScore

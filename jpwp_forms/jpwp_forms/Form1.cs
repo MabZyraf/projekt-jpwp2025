@@ -39,11 +39,21 @@ namespace jpwp_forms
         }
 
         private void GameMode(Difficulty mode)
-        {
-            switch (mode)   //difficulty setup
+        {//poziom trudnoœci
+            switch (mode)   
             {
                 case Difficulty.Easy:
                     currentDiff = Difficulty.Easy;
+                    int los = budda.Next(1, 3);
+                    switch (los)
+                    {
+                        case 1:
+                            player.Pic = Properties.Resources.dog;
+                            break;
+                        case 2:
+                            player.Pic = Properties.Resources.cat;
+                            break;
+                    }
                     speed = 1;
                     points = 10;
                     image = 1;
@@ -52,7 +62,7 @@ namespace jpwp_forms
 
                 case Difficulty.Medium:
                     currentDiff = Difficulty.Medium;
-                    int los = budda.Next(1, 4);
+                    los = budda.Next(1, 4);
                     switch (los)
                     {
                         case 1:
@@ -73,6 +83,19 @@ namespace jpwp_forms
 
                 case Difficulty.Hard:
                     currentDiff = Difficulty.Hard;
+                    los = budda.Next(1, 4);
+                    switch (los)
+                    {
+                        case 1:
+                            player.Pic = Properties.Resources.squirrel;
+                            break;
+                        case 2:
+                            player.Pic = Properties.Resources.stag;
+                            break;
+                        case 3:
+                            player.Pic = Properties.Resources.rabbit;
+                            break;
+                    }
                     speed = 3;
                     points = 50;
                     image = 3;
@@ -210,9 +233,13 @@ namespace jpwp_forms
         private void FoodWave()
         {
             int goodLine = budda.Next(0, 3);
-            int fortuneFood = budda.Next(1, 5);
+            int fortuneFood1 = budda.Next(1, 6);
+            int fortuneFood2 = budda.Next(1, 8);
+            int fortuneFood3 = budda.Next(1, 8);
             int unFortuneFood1 = budda.Next(1, 5);
-            int unFortuneFood2 = ((unFortuneFood1 * fortuneFood) % 4) + 1;
+            int unFortuneFood2 = ((unFortuneFood1 * fortuneFood1) % 13) + 1;
+            int unFortuneFood3 = ((unFortuneFood1 * fortuneFood2) % 18) + 1;
+            int unFortuneFood4 = ((unFortuneFood1 * fortuneFood3) % 16) + 1;
             int licznikZlych = 0;
             for (int i = 0; i < 3; i++)
             {
@@ -236,7 +263,7 @@ namespace jpwp_forms
                     case Difficulty.Easy:
                         if (goodFood)
                         {
-                            switch (fortuneFood)
+                            switch (fortuneFood1)
                             {
                                 case 1:
                                     wybranyObrazek = Properties.Resources.cookedMeat;
@@ -322,7 +349,7 @@ namespace jpwp_forms
                     case Difficulty.Medium:
                         if (goodFood)
                         {
-                            switch (fortuneFood)
+                            switch (fortuneFood2)
                             {
                                 case 1:
                                     wybranyObrazek = Properties.Resources.sunflower;
@@ -351,7 +378,7 @@ namespace jpwp_forms
                         {
                             int aktualnyPech;
                             if (licznikZlych == 1) aktualnyPech = unFortuneFood1;
-                            else aktualnyPech = unFortuneFood2;
+                            else aktualnyPech = unFortuneFood3;
 
                             switch (aktualnyPech)
                             {
@@ -366,7 +393,7 @@ namespace jpwp_forms
                                 case 3:
                                     wybranyObrazek = Properties.Resources.pasta;
                                     theAnwser = "Pasta: Both cooked and raw pasta is extremly dangerous for birds.";
-                                    break;                               
+                                    break;
                                 case 4:
                                     wybranyObrazek = Properties.Resources.avocado;
                                     theAnwser = "Avocado: Contains persin, which causes heart failure and respiratory distress in birds.";
@@ -433,7 +460,7 @@ namespace jpwp_forms
                     case Difficulty.Hard:
                         if (goodFood)
                         {
-                            switch (fortuneFood)
+                            switch (fortuneFood3)
                             {
                                 case 1:
                                     wybranyObrazek = Properties.Resources.hay;
@@ -458,17 +485,21 @@ namespace jpwp_forms
                                     break;
                             }
                         }
-                        else 
+                        else
                         {
                             int aktualnyPech;
                             if (licznikZlych == 1) aktualnyPech = unFortuneFood1;
-                            else aktualnyPech = unFortuneFood2;
+                            else aktualnyPech = unFortuneFood4;
 
                             switch (aktualnyPech)
                             {
                                 case 1:
                                     wybranyObrazek = Properties.Resources.bread;
                                     theAnwser = "Bread: Disrupts digestion causing lactic acidosis and fatal bloating.";
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.fruitPits;
+                                    theAnwser = "Fruit Pits: Cyanide content poses a significant poisoning risk.";
                                     break;
                                 case 3:
                                     wybranyObrazek = Properties.Resources.sweets;
@@ -506,28 +537,25 @@ namespace jpwp_forms
                                     wybranyObrazek = Properties.Resources.friedFood;
                                     theAnwser = "Processed Food: Chemicals and preservatives are indigestible for wildlife.";
                                     break;
-                                case 13:
+                                case 12:
                                     wybranyObrazek = Properties.Resources.milk;
                                     theAnwser = "Dairy Products: Adult herbivores lack the enzyme lactase; causes severe diarrhea.";
                                     break;
-                                case 15:
+                                case 13:
                                     wybranyObrazek = Properties.Resources.citrus;
                                     theAnwser = "Citrus Fruits: High acidity can cause ulcers and digestive pain.";
                                     break;
-                                case 16:
+                                case 14:
                                     wybranyObrazek = Properties.Resources.wiltedBranches;
                                     theAnwser = "Wilted Fruit Branches: Wilting leaves of stone fruits produce deadly cyanide.";
                                     break;
-                                case 18:
+                                case 15:
                                     wybranyObrazek = Properties.Resources.corn;
                                     theAnwser = "Corn: Introducing high starch in winter causes rapid acidosis and death in deer.";
                                     break;
-                                case 20:
-                                    wybranyObrazek = Properties.Resources.fruitPits;
-                                    theAnwser = "Fruit Pits: Cyanide content poses a significant poisoning risk.";
-                                    break;
-                                }
+                               
                             }
+                        }
                         break;
                 }
                 if (wybranyObrazek == null) wybranyObrazek = Properties.Resources.apple;
@@ -553,8 +581,9 @@ namespace jpwp_forms
             for (int i = listaJedzenia.Count - 1; i >= 0; i--)
             {
                 int vBonus = score / 50;
+                if (vBonus > 10) vBonus = 10;
                 var item = listaJedzenia[i];
-                item.X -= speed * 8 + vBonus;
+                item.X -= (speed * 6) + vBonus;
                 Rectangle playerField = new Rectangle(player.X, player.Y, player.Width, player.Height);
                 Rectangle foodField = new Rectangle(item.X, item.Y, 80, 80);
 
