@@ -234,8 +234,89 @@ namespace jpwp_forms
                 switch (currentDiff)
                 {
                     case Difficulty.Easy:
-                        if (goodFood) wybranyObrazek = Properties.Resources.t這_easy;
-                        else wybranyObrazek = Properties.Resources.t這_easy;
+                        if (goodFood)
+                        {
+                            switch (fortuneFood)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.cookedMeat;
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.carrot;
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.pumpkin;
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.whiteRice;
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.petFood;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            int aktualnyPech;
+                            if (licznikZlych == 1) aktualnyPech = unFortuneFood1;
+                            else aktualnyPech = unFortuneFood2;
+
+                            switch (aktualnyPech)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.chocolate;
+                                    theAnwser = "Chocolate: Contains theobromine; causes vomiting, seizures, and heart arrhythmias.";
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.grapes;
+                                    theAnwser = "Grapes & Raisins: Can cause sudden, acute kidney failure, especially in dogs.";
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.onion;
+                                    theAnwser = "Onion: Damages red blood cells causing hemolytic anemia.";
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.garlic;
+                                    theAnwser = "Garlic: 5 times more potent than onions; highly toxic to red blood cells.";
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.alcohol;
+                                    theAnwser = "Alcohol: Causes severe liver damage, coma, and respiratory failure.";
+                                    break;
+                                case 6:
+                                    wybranyObrazek = Properties.Resources.coffee;
+                                    theAnwser = "Caffeine: Leads to hypertension, tremors, and dangerous heart rhythms.";
+                                    break;
+                                case 7:
+                                    wybranyObrazek = Properties.Resources.fishBones;
+                                    theAnwser = "Fish Bones: Sharp and small, they can lodge in the throat or intestines.";
+                                    break;
+                                case 8:
+                                    wybranyObrazek = Properties.Resources.chips;
+                                    theAnwser = "Salty Snacks: Excessive salt leads to sodium ion poisoning and brain swelling.";
+                                    break;
+                                case 9:
+                                    wybranyObrazek = Properties.Resources.avocado;
+                                    theAnwser = "Avocado: Contains persin (toxic) and the pit presents a major choking hazard.";
+                                    break;
+                                case 10:
+                                    wybranyObrazek = Properties.Resources.fruitPits;
+                                    theAnwser = "Fruit Pits: Contain cyanide and can cause intestinal blockages.";
+                                    break;
+                                case 11:
+                                    wybranyObrazek = Properties.Resources.moldyTrash;
+                                    theAnwser = "Moldy Food: Tremorgenic mycotoxins in mold cause severe muscle tremors.";
+                                    break;
+                                case 12:
+                                    wybranyObrazek = Properties.Resources.milk;
+                                    theAnwser = "Milk: Most adult dogs and cats are lactose intolerant, leading to digestive upset.";
+                                    break;
+                                case 13:
+                                    wybranyObrazek = Properties.Resources.rawFish;
+                                    theAnwser = "Raw Fish: May contain parasites or destroy Vitamin B1 (thiamine deficiency).";
+                                    break;
+                            }
+                        }
                         break;
 
                     case Difficulty.Medium:
@@ -244,16 +325,25 @@ namespace jpwp_forms
                             switch (fortuneFood)
                             {
                                 case 1:
-                                    wybranyObrazek = Properties.Resources.apple;
+                                    wybranyObrazek = Properties.Resources.sunflower;
                                     break;
                                 case 2:
                                     wybranyObrazek = Properties.Resources.carrot;
                                     break;
                                 case 3:
-                                    wybranyObrazek = Properties.Resources.nuts;
+                                    wybranyObrazek = Properties.Resources.millet;
                                     break;
                                 case 4:
-                                    wybranyObrazek = Properties.Resources.sunflower;
+                                    wybranyObrazek = Properties.Resources.nuts;
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.driedFruit;
+                                    break;
+                                case 6:
+                                    wybranyObrazek = Properties.Resources.apple;
+                                    break;
+                                case 7:
+                                    wybranyObrazek = Properties.Resources.worms;
                                     break;
                             }
                         }
@@ -267,25 +357,177 @@ namespace jpwp_forms
                             {
                                 case 1:
                                     wybranyObrazek = Properties.Resources.bread;
+                                    theAnwser = "Bread: Provides empty calories, causes 'angel wing' deformity, and risks sour crop.";
                                     break;
                                 case 2:
-                                    wybranyObrazek = Properties.Resources.chips;
-                                    break;
-                                case 3:
                                     wybranyObrazek = Properties.Resources.milk;
                                     theAnwser = "Milk: Unlike mammals, birds cannot digeste lactose.";
                                     break;
-                                case 4:
+                                case 3:
                                     wybranyObrazek = Properties.Resources.pasta;
                                     theAnwser = "Pasta: Both cooked and raw pasta is extremly dangerous for birds.";
+                                    break;                               
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.avocado;
+                                    theAnwser = "Avocado: Contains persin, which causes heart failure and respiratory distress in birds.";
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.chocolate;
+                                    theAnwser = "Chocolate: Contains theobromine, which induces vomiting, diarrhea, and seizures.";
+                                    break;
+                                case 6:
+                                    wybranyObrazek = Properties.Resources.coffee;
+                                    theAnwser = "Caffeine: Causes cardiac arrest and hyperactivity; highly toxic.";
+                                    break;
+                                case 7:
+                                    wybranyObrazek = Properties.Resources.alcohol;
+                                    theAnwser = "Alcohol: Depresses organ systems and can be fatal even in tiny drops.";
+                                    break;
+                                case 8:
+                                    wybranyObrazek = Properties.Resources.onion;
+                                    theAnwser = "Onion: Contains sulfur compounds that destroy red blood cells, causing anemia.";
+                                    break;
+                                case 9:
+                                    wybranyObrazek = Properties.Resources.garlic;
+                                    theAnwser = "Garlic: Similar to onions but less potent; causes anemia and weakness.";
+                                    break;
+                                case 10:
+                                    wybranyObrazek = Properties.Resources.appleSeeds;
+                                    theAnwser = "Fruit Pits/Seeds: Contain cyanide which is lethal to birds.";
+                                    break;
+                                case 11:
+                                    wybranyObrazek = Properties.Resources.rawBeans;
+                                    theAnwser = "Raw Beans: Contain hemagglutinin (lectin), which is highly toxic unless cooked.";
+                                    break;
+                                case 12:
+                                    wybranyObrazek = Properties.Resources.salt;
+                                    theAnwser = "Salt: Deadly even in small amounts; causes dehydration and kidney failure.";
+                                    break;
+                                case 13:
+                                    wybranyObrazek = Properties.Resources.chips;
+                                    break;
+                                case 14:
+                                    wybranyObrazek = Properties.Resources.friedFood;
+                                    theAnwser = "Fried Food: Can cause obesity and skin issues; birds cannot process trans fats.";
+                                    break;
+                                case 15:
+                                    wybranyObrazek = Properties.Resources.rhubarb;
+                                    theAnwser = "Rhubarb: Contains oxalates that cause immediate kidney damage.";
+                                    break;
+                                case 16:
+                                    wybranyObrazek = Properties.Resources.mushrooms;
+                                    theAnwser = "Mushrooms: Many varieties cause liver failure and digestive upset.";
+                                    break;
+                                case 17:
+                                    wybranyObrazek = Properties.Resources.greenTomato;
+                                    theAnwser = "Green Tomato parts: Stems and leaves contain solanine, a neurotoxin.";
+                                    break;
+                                case 18:
+                                    wybranyObrazek = Properties.Resources.dryCoconut;
+                                    theAnwser = "Desiccated Coconut: Swells inside the crop and can cause suffocation.";
                                     break;
                             }
                         }
                         break;
 
                     case Difficulty.Hard:
-                        if (goodFood) wybranyObrazek = Properties.Resources.t這_hard;
-                        else wybranyObrazek = Properties.Resources.t這_hard;
+                        if (goodFood)
+                        {
+                            switch (fortuneFood)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.hay;
+                                    break;
+                                case 2:
+                                    wybranyObrazek = Properties.Resources.carrot;
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.branches;
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.nuts;
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.acorns;
+                                    break;
+                                case 6:
+                                    wybranyObrazek = Properties.Resources.herbs;
+                                    break;
+                                case 7:
+                                    wybranyObrazek = Properties.Resources.driedLeaves;
+                                    break;
+                            }
+                        }
+                        else 
+                        {
+                            int aktualnyPech;
+                            if (licznikZlych == 1) aktualnyPech = unFortuneFood1;
+                            else aktualnyPech = unFortuneFood2;
+
+                            switch (aktualnyPech)
+                            {
+                                case 1:
+                                    wybranyObrazek = Properties.Resources.bread;
+                                    theAnwser = "Bread: Disrupts digestion causing lactic acidosis and fatal bloating.";
+                                    break;
+                                case 3:
+                                    wybranyObrazek = Properties.Resources.sweets;
+                                    theAnwser = "Sweets/Cookies: Sugar destroys the gut bacteria needed to digest grass.";
+                                    break;
+                                case 4:
+                                    wybranyObrazek = Properties.Resources.potatoes;
+                                    theAnwser = "Raw Potatoes: High starch content and solanine make them toxic and hard to digest.";
+                                    break;
+                                case 5:
+                                    wybranyObrazek = Properties.Resources.onion;
+                                    theAnwser = "Onion & Garlic: Cause immunosuppression and anaphylactic shock in some wild animals.";
+                                    break;
+                                case 6:
+                                    wybranyObrazek = Properties.Resources.rhubarb;
+                                    theAnwser = "Rhubarb Leaves: Extremely high in oxalates, causing kidney failure.";
+                                    break;
+                                case 7:
+                                    wybranyObrazek = Properties.Resources.cabbage;
+                                    theAnwser = "Cabbage: Ferments rapidly in the gut, causing gas and fatal bloating (GI Stasis).";
+                                    break;
+                                case 8:
+                                    wybranyObrazek = Properties.Resources.lettuce;
+                                    theAnwser = "Iceberg Lettuce: Contains lactucarium which can be harmful; has zero nutritional value.";
+                                    break;
+                                case 9:
+                                    wybranyObrazek = Properties.Resources.avocado;
+                                    theAnwser = "Avocado: Highly toxic to rabbits and horses causing respiratory congestion.";
+                                    break;
+                                case 10:
+                                    wybranyObrazek = Properties.Resources.chocolate;
+                                    theAnwser = "Chocolate: Theobromine is toxic to squirrels, rabbits, and deer alike.";
+                                    break;
+                                case 11:
+                                    wybranyObrazek = Properties.Resources.friedFood;
+                                    theAnwser = "Processed Food: Chemicals and preservatives are indigestible for wildlife.";
+                                    break;
+                                case 13:
+                                    wybranyObrazek = Properties.Resources.milk;
+                                    theAnwser = "Dairy Products: Adult herbivores lack the enzyme lactase; causes severe diarrhea.";
+                                    break;
+                                case 15:
+                                    wybranyObrazek = Properties.Resources.citrus;
+                                    theAnwser = "Citrus Fruits: High acidity can cause ulcers and digestive pain.";
+                                    break;
+                                case 16:
+                                    wybranyObrazek = Properties.Resources.wiltedBranches;
+                                    theAnwser = "Wilted Fruit Branches: Wilting leaves of stone fruits produce deadly cyanide.";
+                                    break;
+                                case 18:
+                                    wybranyObrazek = Properties.Resources.corn;
+                                    theAnwser = "Corn: Introducing high starch in winter causes rapid acidosis and death in deer.";
+                                    break;
+                                case 20:
+                                    wybranyObrazek = Properties.Resources.fruitPits;
+                                    theAnwser = "Fruit Pits: Cyanide content poses a significant poisoning risk.";
+                                    break;
+                                }
+                            }
                         break;
                 }
                 if (wybranyObrazek == null) wybranyObrazek = Properties.Resources.apple;
