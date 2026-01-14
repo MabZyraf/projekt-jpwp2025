@@ -12,7 +12,7 @@ namespace jpwp_forms
         private Avatar player;
         private int tickCounter = 0;
         private int hearts = 3;
-        private int speed;  //difficulty
+        private int speed; 
         private int points;
         private int score = 0;
         private int image;
@@ -118,18 +118,18 @@ namespace jpwp_forms
 
             FoodWave();
             panelGra.Invalidate();
-            GameWindow();   //gaming interface 
+            GameWindow(); 
             PointCounter();
-            this.Focus();   //keyboard control
+            this.Focus();  
         }
         private void GameWindow()
         {
-            //gaming interface
+           
         }
 
         private void PointCounter()
         {
-            //
+            
         }
 
         private void easy_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace jpwp_forms
 
         private void menu_Click(object sender, EventArgs e)
         {
-            //gameTimer.Stop();
+            
             panelGra.Visible = false;
             panelMenu.Visible = true;
             panelMenu.BringToFront();
@@ -231,7 +231,7 @@ namespace jpwp_forms
             return base.ProcessCmdKey(ref msg, keyData);
         }
         private void FoodWave()
-        {
+        {//logika za jedzeniem
             int goodLine = budda.Next(0, 3);
             int fortuneFood1 = budda.Next(1, 6);
             int fortuneFood2 = budda.Next(1, 8);
@@ -568,7 +568,7 @@ namespace jpwp_forms
         }
 
         private void timer_Tick(object sender, EventArgs e)
-        {
+        {//ruch jedzenia
             tickCounter++;
             int hold = 70;
             if (currentDiff == Difficulty.Medium) hold = 50;
@@ -615,11 +615,11 @@ namespace jpwp_forms
                 }
             }
             panelGra.Invalidate();
-            lblScore.Text = "Punkty: " + score;
+            lblScore.Text = "Points: " + score;
         }
 
         private void GameOver()
-        {
+        {//okno po przegraniu
             timer.Stop();
             SaveScore();
             string feedback = "Game Over\nScore:" + score + "\n\nYour mistakes:\n";
@@ -628,14 +628,6 @@ namespace jpwp_forms
             {
                 feedback += "- " + mistake + "\n";
             }
-            /*if (outro.Count == 0)
-            {
-                feedback += "Perfect score";
-            }
-            else
-            {
-                feedback += "You made " + outro.Count + "mistake/s";
-            }*/
             MessageBox.Show(feedback);
 
             panelGra.Visible = false;
@@ -644,7 +636,7 @@ namespace jpwp_forms
         }
 
         private void btnPause_Click(object sender, EventArgs e)
-        {
+        {//pauza
             if (timer.Enabled == true)
             {
                 timer.Stop();
@@ -692,7 +684,7 @@ namespace jpwp_forms
             }
         }
         private void ReadScore()
-        {
+        {//wyœwietlenie rekordu
             if (File.Exists("record.txt"))
             {
                 string highScore = File.ReadAllText("record.txt");

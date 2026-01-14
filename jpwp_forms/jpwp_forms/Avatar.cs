@@ -18,7 +18,7 @@ namespace jpwp_forms
         {
             X = startX; 
             Y = startY; 
-            Hearts = 3;  // Startujemy z 3 serduszkami
+            Hearts = 3;
             Width = 160;
             Height = 130;
             Pic = Properties.Resources.duck;
